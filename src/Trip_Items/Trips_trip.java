@@ -1,11 +1,11 @@
-
+package Trip_Items;
 
 import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.util.Date;
+import Trip_DBs.DB_Item;
 
-class Trips_trip{
-    private String title;
+public class Trips_trip extends DB_Item implements Comparable {
     private Date startDate;
     private Date endDate;
     private ImageView headerImage;
@@ -22,17 +22,17 @@ class Trips_trip{
 
     }
 
-    public Trips_trip(String title, Date startDate, Date endDate, Color textColor) {
-        this.title = title;
+    public Trips_trip(String name, Date startDate, Date endDate, Color textColor) {
+        this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.textColor = textColor;
     }
 
-    public Trips_trip(String title, Date startDate, Date endDate,
+    public Trips_trip(String name, Date startDate, Date endDate,
                       ImageView headerImage, ImageView mainImage,
                       Color textColor) {
-        this.title = title;
+        this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.headerImage = headerImage;
@@ -40,7 +40,7 @@ class Trips_trip{
         this.textColor = textColor;
 
         //this.packlist = packlist;
-        //this.travelbook = new Travelbook(title);
+        //this.travelbook = new Travelbook(name);
         //this.plan = new Plan();
     }
 
@@ -48,18 +48,23 @@ class Trips_trip{
         return startDate;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
-        return "Trips_trip{" +
-                "\ntitle='" + title + '\'' +
+        return "Trip_Items.Trips_trip{" +
+                "\nname='" + name + '\'' +
                 ", \nstartDate=" + startDate +
                 ", \nendDate=" + endDate +
                 ", \ntextColor=" + textColor +
                 "}\n";
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return name.compareTo((String)o);
     }
 }
 
