@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 class MainActivity{
     public static void main(String[] args){
-		 Trips_BD trips_bd = new Trips_BD(Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
+//		 Trips_BD trips_bd = new Trips_BD(Comparator.naturalOrder(), Comparator.naturalOrder(), Comparator.naturalOrder());
 
         // Trips_DB trips_db = new Trips_DB(comparator);
 

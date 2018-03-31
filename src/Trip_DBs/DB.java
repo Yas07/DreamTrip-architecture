@@ -18,6 +18,11 @@ abstract class DB<KEY, VALUE extends DB_Item> {
         _keyValueDB = TreeMultimap.create(keyComparator, valueComparator);
         _StringValueDB = TreeMultimap.create(stringComparator, valueComparator);
     }
+    public DB(Comparator comparator)
+    {
+        _keyValueDB = TreeMultimap.create(comparator, comparator);
+        _StringValueDB = TreeMultimap.create(comparator, comparator);
+    }
 
 
     public void add(KEY key, VALUE value)

@@ -1,28 +1,25 @@
 package Trip_Items;
 
 import Trip_DBs.DB_Item;
+import Trip_Items.Trips_Plan.Plan;
 
 import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.util.Date;
 
 public class Trips_trip extends DB_Item implements Comparable {
-    private Date startDate;
-    private Date endDate;
-    private ImageView headerImage;
-    private ImageView mainImage;
-    private Color textColor;
+    private Date            startDate;
+    private Date            endDate;
+    private ImageView       headerImage;
+    private ImageView       mainImage;
+    private Color           textColor;
+    private Plan            plan;
+//    private Places_DB       places;
+//    private TravelBook      travelbook;
+//    private PackList        packList;
 
-//    private Plan plan;
-//    private Places_DB places;
-//    private TravelBook travelbook;
-//    private PackList packList;
-
-
-    public Trips_trip(){
-
-    }
-
+    // TODO: this constuctor is needed only for testing, remove in production.
+    // Do not use in non-testing use cases!!
     public Trips_trip(String name, Date startDate, Date endDate, Color textColor) {
         this.name = name;
         this.startDate = startDate;
@@ -33,16 +30,15 @@ public class Trips_trip extends DB_Item implements Comparable {
     public Trips_trip(String name, Date startDate, Date endDate,
                       ImageView headerImage, ImageView mainImage,
                       Color textColor) {
-        this.name = name;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.headerImage = headerImage;
-        this.mainImage = mainImage;
-        this.textColor = textColor;
-
-        //this.packlist = packlist;
-        //this.travelbook = new Travelbook(name);
-        //this.plan = new Plan();
+        this.name           = name;
+        this.startDate      = startDate;
+        this.endDate        = endDate;
+        this.headerImage    = headerImage;
+        this.mainImage      = mainImage;
+        this.textColor      = textColor;
+//        this.packlist       = packlist;
+//        this.travelbook     = new Travelbook(name);
+        this.plan = new Plan();
     }
 
     public Date getStartDate() {
