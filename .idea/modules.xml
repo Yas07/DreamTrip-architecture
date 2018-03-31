@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DreamTrip-architecture.iml" filepath="$PROJECT_DIR$/DreamTrip-architecture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DreamTrip.iml" filepath="$PROJECT_DIR$/DreamTrip.iml" />
     </modules>
   </component>
 </project>

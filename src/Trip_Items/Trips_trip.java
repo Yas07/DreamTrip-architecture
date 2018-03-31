@@ -1,9 +1,10 @@
 package Trip_Items;
 
+import Trip_DBs.DB_Item;
+
 import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.util.Date;
-import Trip_DBs.DB_Item;
 
 public class Trips_trip extends DB_Item implements Comparable {
     private Date startDate;
@@ -64,7 +65,7 @@ public class Trips_trip extends DB_Item implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return name.compareTo((String)o);
+        return name.compareTo(((Trips_trip)o).getName());
     }
 }
 

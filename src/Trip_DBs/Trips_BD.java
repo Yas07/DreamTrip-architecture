@@ -1,8 +1,9 @@
 package Trip_DBs;
 
+import Trip_Items.Trips_trip;
+
 import java.util.Comparator;
 import java.util.Date;
-import Trip_Items.Trips_trip;
 
 // TODO: Remove this code if it's not needed
 //public class Trip_DB extends TreeMultimap<Date, Trip_> {
@@ -26,10 +27,12 @@ import Trip_Items.Trips_trip;
 //    }
 //}
 
-public class Trips_BD extends database<Date, Trips_trip> {
+public class Trips_BD extends DB<Date, Trips_trip> {
 
-	public Trips_BD(Comparator<Date> keyComparator, Comparator<Trips_trip> valueComparator){
-		super(keyComparator, valueComparator);
+	public Trips_BD(Comparator<Date> keyComparator,
+                    Comparator<Trips_trip> valueComparator,
+                    Comparator<String> nameComparator){
+		super(keyComparator, valueComparator, nameComparator);
 	}
 
     void addToDb(Trips_trip value)
