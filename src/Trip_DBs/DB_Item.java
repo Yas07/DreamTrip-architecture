@@ -1,6 +1,6 @@
 package Trip_DBs;
 
-public class DB_Item {
+abstract public class DB_Item implements IDB {
     protected String name;
     protected String getItemName(){
         return name;

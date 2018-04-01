@@ -1,35 +1,32 @@
 package Trip_DBs;
 import com.google.common.collect.TreeMultimap;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.NavigableSet;
 
-abstract class DB<KEY, VALUE extends DB_Item> {
+abstract class DB<KEY, VALUE extends DB_Item>{
     private TreeMultimap<KEY,VALUE> _keyValueDB;
-    private TreeMultimap<String,VALUE> _StringValueDB;
-
-    // ** abstract methods.. **
-    abstract void addToDb(VALUE value);
-    abstract void removeFromDb(VALUE value);
+    private TreeMultimap<String,VALUE> _stringValueDB;
 
     // ** public methods.. **
     public DB(Comparator<KEY> keyComparator, Comparator<VALUE> valueComparator, Comparator<String> stringComparator)
     {
         _keyValueDB = TreeMultimap.create(keyComparator, valueComparator);
-        _StringValueDB = TreeMultimap.create(stringComparator, valueComparator);
+        _stringValueDB = TreeMultimap.create(stringComparator, valueComparator);
     }
     public DB(Comparator comparator)
     {
         _keyValueDB = TreeMultimap.create(comparator, comparator);
-        _StringValueDB = TreeMultimap.create(comparator, comparator);
+        _stringValueDB = TreeMultimap.create(comparator, comparator);
     }
 
 
     public void add(KEY key, VALUE value)
     {
         _keyValueDB.put(key, value);
-        _StringValueDB.put(value.getItemName(), value);
-        addToDb(value);
+        _stringValueDB.put(value.getItemName(), value);
+        value.addToDb();
     }
 
 
@@ -39,7 +36,7 @@ abstract class DB<KEY, VALUE extends DB_Item> {
     }
     public NavigableSet<VALUE> findAll(String name)
     {
-        return _StringValueDB.get(name);
+        return _stringValueDB.get(name);
     }
 
     public VALUE find(KEY key, String name){
@@ -55,8 +52,8 @@ abstract class DB<KEY, VALUE extends DB_Item> {
     public void remove(KEY key, VALUE value)
     {
         _keyValueDB.remove(key, value);
-        _StringValueDB.remove(value.getItemName(), value);
-        removeFromDb(value);
+        _stringValueDB.remove(value.getItemName(), value);
+        value.removeFromDb();
     }
 
     public void remove(KEY key, String name)
@@ -64,10 +61,18 @@ abstract class DB<KEY, VALUE extends DB_Item> {
         VALUE value = find(key, name);
         if (value != null) {
             _keyValueDB.remove(key, value);
-            _StringValueDB.remove(name, value);
+            _stringValueDB.remove(name, value);
         } else {
           // TODO: print something..
         }
+    }
+
+    protected Collection<VALUE> getValuesSortByName() {
+        return _stringValueDB.values();
+    }
+
+    protected Collection<VALUE> getValuesSortByKey() {
+        return _keyValueDB.values();
     }
 }
 

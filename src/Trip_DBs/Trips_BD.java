@@ -2,6 +2,7 @@ package Trip_DBs;
 
 import Trip_Items.Trips_trip;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -21,14 +22,14 @@ public class Trips_BD extends DB<Date, Trips_trip> {
         remove(trip.getStartDate(), trip);
     }
 
-    void addToDb(Trips_trip value)
+    public Collection<Trips_trip> getValuesSortByDate()
     {
-        // some special SQL magic..
+        return getValuesSortByKey();
     }
 
-    void removeFromDb(Trips_trip value)
+    public Collection<Trips_trip> getValuesSortByTripName()
     {
-        // some special SQL magic..
+        return getValuesSortByName();
     }
 }
 

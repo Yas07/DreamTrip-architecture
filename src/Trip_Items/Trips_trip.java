@@ -63,5 +63,15 @@ public class Trips_trip extends DB_Item implements Comparable {
     public int compareTo(Object o) {
         return name.compareTo(((Trips_trip)o).getName());
     }
+
+    @Override
+    public void addToDb() {
+        // save fields into SQL db..
+    }
+
+    @Override
+    public void removeFromDb() {
+        // save fields into SQL db..
+    }
 }
 
